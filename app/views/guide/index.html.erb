@@ -1,0 +1,12 @@
+<h1>Let's Party!</h1>
+<table>
+<tr>
+<th align="left">Events</th>
+</tr>
+<% @user_events.each do |user_events| %>
+<tr>
+<td><%=user_events.event_name%></td>
+<td><%=user_events.event_date%></td>
+</tr>
+<% end %>
+</table>

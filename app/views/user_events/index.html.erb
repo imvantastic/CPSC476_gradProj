@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event name</th>
+      <th>Event date</th>
+      <th>User</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_events.each do |user_event| %>
+      <tr>
+        <td><%= user_event.event_name %></td>
+        <td><%= user_event.event_date %></td>
+        <td><%= User.find(user_event.user_id).email %></td>
+        <td><%= link_to 'Like Event', like_path(:event_id => user_event.id), method: "post" %></td>
+        <!-- <td><%#= link_to 'Show', user_event %></td>
+        <td><%#= link_to 'Edit', edit_user_event_path(user_event) %></td>
+        <td><%#= link_to 'Destroy', user_event, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>My Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event name</th>
+      <th>Event date</th>
+      <th>User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @my_events.each do |user_event| %>
+      <tr>
+        <td><%= user_event.event_name %></td>
+        <td><%= user_event.event_date %></td>
+        <td><%= User.find(user_event.user_id).email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+<h1>Liked Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event name</th>
+      <th>Event date</th>
+      <th>User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @liked_events.each do |user_event| %>
+      <tr>
+        <td><%= user_event.event_name %></td>
+        <td><%= user_event.event_date %></td>
+        <td><%= User.find(user_event.user_id).email  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New User event', new_user_event_path %>
